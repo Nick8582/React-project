@@ -32,12 +32,22 @@ const Home = () => {
    
     const removeTodo = id => setTodos([...todos].filter(t => t._id !== id))
 
+    const editTodo = (id) => {
+        const editInput = document.getElementById('editInput')
+        editInput.value = ''
+        const copy = [...todos]
+        const current = copy.find(t => t._id === id)
+        
+        editInput.setAttribute('data-todo', current._id)
+        editInput.value += current.title
+    }
+
     return (
         <div className='text-white w-1/3 mx-auto ' >
             <h1 className="text-2xl font-bold text-center mb-5">Список задач</h1>
             <CreateTodoField setTodos={setTodos} />
             {todos.map(todo => (
-                <TodoItem  key={todo._id} todo={todo} changeTodo={changeTodo} removeTodo={removeTodo}/>
+                <TodoItem  key={todo._id} todo={todo} changeTodo={changeTodo} removeTodo={removeTodo} editTodo={editTodo}/>
             ))}
             
         </div>
