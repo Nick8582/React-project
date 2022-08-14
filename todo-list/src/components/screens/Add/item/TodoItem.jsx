@@ -16,7 +16,6 @@ const TodoItem = ({todo, changeTodo, removeTodo, editTodo}) => {
                     element="span"
                     truncateText="…"
                     text={todo.title}
-                    
                 />
                     
                 </span> 
